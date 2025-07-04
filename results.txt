@@ -1,0 +1,159 @@
+Opening PDF: Ex Libris Discovery - privacy-Preserving Techniques in Federated Learning for Secure Healthcare Data Sharing.pdf
+Total extracted text length: 115039 characters
+Extracted 118 entries from PDF.
+--- Top 1 Study (Score: 24) ---
+
+Description: Federated learning avoids centralizing data in a central server by distributing the
+model training process across devices, thus protecting privacy to some extent. However, existing
+research shows that model updates (e.g., gradients or weights) exchanged during federated learning
+may still indirectly leak sensitive information about the original data. Currently, single-key
+homomorphic encryption methods applied in federated learning cannot solve the problem of
+privacy leakage that may be caused by the collusion between the participant and the federated
+learning server, whereas existing privacy-preserving federated learning schemes based on multi-key
+homomorphic encryption in semi-honest environments have deﬁciencies and limitations in terms of
+security and application conditions. To this end, this paper proposes a privacy-preserving federated
+learning scheme based on multi-key fully homomorphic encryption to cope with the potential risk
+of privacy leakage in traditional fed ...
+
+================================================================================
+
+--- Top 2 Study (Score: 20) ---
+
+Description: AbstractIn recent years, the global Internet of Medical Things (IoMT) industry has
+evolved at a tremendous speed. Security and privacy are key concerns on the IoMT, owing to the
+huge scale and deployment of IoMT networks. Machine learning (ML) and blockchain (BC)
+technologies have signiﬁcantly enhanced the capabilities and facilities of healthcare 5.0, spawning a
+new area known as “Smart Healthcare.” By identifying concerns early, a smart healthcare system
+can help avoid long-term damage. This will enhance the quality of life for patients while reducing
+their stress and healthcare costs. The IoMT enables a range of functionalities in the ﬁeld of
+information technology, one of which is smart and interactive health care. However, combining
+medical data into a single storage location to train a powerful machine learning model raises
+concerns about privacy, ownership, and compliance with greater concentration. Federated learning
+(FL) overcomes the preceding difﬁculties by util ...
+
+================================================================================
+
+--- Top 3 Study (Score: 16) ---
+
+Description: Federated Learning (FL) transformed decentralized machine learning by allowing
+joint model training without mutually sharing raw data, hence being especially useful in privacy-
+sensitive applications like healthcare, e-commerce, and ﬁnance. Even with its privacy-focused
+architecture, FL is vulnerable to a range of security attacks such as data poisoning, model inversion,
+membership inference attacks, and communication interception. These attacks compromise the
+conﬁdentiality of patients in healthcare, consumer data privacy in e-commerce, and ﬁnancial safety
+in banking, thus necessitating effective privacy-preserving mechanisms. This survey presents a
+classiﬁcation of security threats in FL, grouping them by their source, effect, and attack mode. We
+review state-of-the-art countermeasures, such as differential privacy, secure multi-party
+computation, homomorphic encryption, and resilient aggregation methods, their effectiveness,
+trade-offs, and real-world applicability to F ...
+
+================================================================================
+
+--- Top 4 Study (Score: 14) ---
+
+Privacy necessitates the concealment of individual client updates, while security requires the
+disclosure of client updates to detect anomalies. While most existing research focused on the
+privacy and security aspects of FL, very few studies have addressed the compatibility of these two
+demands. In this work, we aim to bridge this gap by proposing a comprehensive defense scheme
+that ensures privacy, security, and compatibility in FL. We categorize the existing literature into two
+key directions: privacy defense and security defense. Privacy defense includes methods based on
+additive masks, differential privacy, homomorphic encryption, and trusted execution environment,
+whereas security defense encompasses distance-, performance-, clustering-, and similarity-based
+anomaly detection techniques and statistical information-based anomaly update bypassing
+techniques when the server is trusted and privacy-compatible anomaly update detection techniques
+when the server is not trusted. In additi ...
+
+================================================================================
+
+--- Top 5 Study (Score: 12) ---
+
+Blockchain ledger technology provides decentralization of federated learning models without
+relying on a central server. Moreover, the proposed homomorphic encryption scheme encrypts and
+decrypts the gradients of the model to preserve privacy. More precisely, the proposed framework:
+(i) train the local model by a novel capsule network for segmentation and classiﬁcation of COVID-
+19 images, (ii) furthermore, we use the homomorphic encryption scheme to secure the local model
+that encrypts and decrypts the gradients, (iii) ﬁnally, the model is shared over a decentralized
+platform through the proposed blockchain-based federated learning algorithm. The integration of
+blockchain and federated learning leads to a new paradigm for medical image data sharing over the
+decentralized network. To validate our proposed model, we conducted comprehensive experiments
+and the results demonstrate the superior performance of the proposed scheme. ...
+
+================================================================================
+
+--- Top 6 Study (Score: 11) ---
+
+Description: In this work, the federated learning mechanism is introduced into the deep learning of
+medical models in Internet of Things (IoT)-based healthcare system. Cryptographic primitives,
+including masks and homomorphic encryption, are applied for further protecting local models, so as
+to prevent the adversary from inferring private medical data by various attacks such as model
+reconstruction attack or model inversion attack, etc. The qualities of the datasets owned by different
+participants are considered as the main factor for measuring the contribution rate of the local model
+to the global model in each training epoch, instead of the size of datasets commonly used in deep
+learning. A dropout-tolerable scheme is proposed in which the process of federated learning would
+not be terminated if the number of online clients is not less than a preset threshold. Through the
+analysis of the security, it shows that the proposed scheme satisﬁes data privacy. Computation cost
+and communica ...
+
+================================================================================
+
+--- Top 7 Study (Score: 11) ---
+
+Learning. The main reason for this is to build efﬁcient artiﬁcial intelligence (AI) based models for
+preliminary diagnosis of various diseases, it would require a large corpus of data which can be
+obtained by pooling in patient information from multiple sources. However, for these sources to
+agree to sharing their data across distributed systems for training algorithms and models, there has
+to be an assurance that there will be no disclosure of the personally identiﬁable information (PII) of
+the respective Data Owners. This paper proposes PriMed, an approach to build robust privacy
+preserving additions to convolutional neural networks (CNN) for training and performing inference
+on medical images without compromising privacy. Since privacy of the data is preserved, large
+amounts of data can be effectively accumulated to increase the accuracy and efﬁciency of AI
+models in the ﬁeld of healthcare. This involves implementing a hybrid of privacy-enhancing
+techniques like Federated Learning,  ...
+
+================================================================================
+
+--- Top 8 Study (Score: 10) ---
+
+Description: The increasing integration of artiﬁcial intelligence (AI) systems into critical societal
+sectors has created an urgent demand for robust privacy-preserving methods. Traditional
+approaches such as differential privacy and homomorphic encryption often struggle to maintain an
+effective balance between protecting sensitive information and preserving data utility for AI
+applications. This challenge has become particularly acute as organizations must comply with
+evolving AI governance frameworks while maintaining the effectiveness of their AI systems. This
+paper aims to introduce and validate data obfuscation through latent space projection (LSP), a novel
+privacy-preserving technique designed to enhance AI governance and ensure responsible AI
+compliance. The primary goal is to develop a method that can effectively protect sensitive data
+while maintaining essential features necessary for AI model training and inference, thereby
+addressing the limitations of existing privacy-prese ...
+
+================================================================================
+
+--- Top 9 Study (Score: 10) ---
+
+Description: In recent years, differential privacy has gained substantial traction in the medical
+domain, where the need to balance privacy preservation with data utility is paramount. As medical
+data increasingly relies on cloud platforms and distributed sharing among multiple stakeholders,
+such as healthcare providers, researchers, and policymakers, the importance of privacy-preserving
+techniques has become more pronounced. Trends in the ﬁeld focus on designing efﬁcient algorithms
+tailored to high-dimensional medical datasets, incorporating privacy guarantees into federated
+learning for distributed medical devices, and addressing challenges posed by adversarial attacks. ...
+
+================================================================================
+
+--- Top 10 Study (Score: 9) ---
+
+Description: Federated learning has emerged as a promising paradigm for collaborative machine
+learning while preserving data privacy. However, concerns about data privacy remain signiﬁcant,
+particularly in scenarios where sensitive information is involved. This paper reviews recent
+advancements in privacy-preserving techniques for federated learning from a machine learning
+perspective. It categorizes and analyses state-of-the-art approaches within a uniﬁed framework,
+highlighting their strengths, limitations, and potential applications. By providing insights into the
+landscape of privacy-preserving federated learning, this review aims to guide researchers and
+practitioners in developing robust and privacy-conscious machine learning solutions for
+collaborative environments. The paper concludes with future research directions to address ongoing
+challenges and further enhance the effectiveness and scalability of privacy-preserving federated
+02/07/2025, 23:41 ...
+
+================================================================================
+
+Results saved to results.csv
