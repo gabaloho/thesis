@@ -1,15 +1,21 @@
+from collections import defaultdict
 import fitz  # PyMuPDF
 import re
-from collections import Counter
 import csv
-import matplotlib.pyplot as plt
 
-# This script analyzes a PDF document to extract and rank studies based on the presence of specific keywords related to privacy-preserving techniques in federated learning for secure healthcare data sharing.
 # Step 1: Define relevant keywords
 KEYWORDS = [
-    "federated learning", "privacy", "homomorphic encryption", "differential privacy",
-    "secure data", "healthcare", "medical", "GDPR", "HIPAA", "encryption", "SMPC",
-    "TEE", "blockchain", "secure aggregation", "data anonymization"
+    "federated learning", "fl", "differential privacy", "dp", 
+    "homomorphic encryption", "he", "secure multiparty computation", "smpc",
+    "trusted execution environment", "tee", "shamir secret sharing",
+    "blockchain", "quantum", "ring signature", "zero knowledge proof",
+    "ehr", "phi", "hipaa", "gdpr", "medical", "clinical", "patient",
+    "diagnos", "treatment", "icu", "x-ray", "ct", "mri", "wearable",
+    "accuracy", "auc", "f1", "overhead", "latency", "scalability",
+    "communication cost", "privacy budget", "epsilon", "computational",
+    "inference attack", "membership attack", "model inversion",
+    "data poisoning", "gradient leakage", "byzantine", "adversarial",
+    "backdoor", "poisoning"
 ]
 
 def keyword_score(text):
@@ -21,77 +27,101 @@ def keyword_score(text):
         print(f"Error in keyword_score: {e}")
         return 0
 
-# Step 2: Extract text blocks from PDF
+# Step 2: Extract entries
 def extract_entries(pdf_path):
+    """Extract entries from the PDF."""
     try:
         doc = fitz.open(pdf_path)
-        text = ""
-        for page in doc:
-            text += page.get_text()
+        text = "\n".join(page.get_text() for page in doc)
         print(f"Total extracted text length: {len(text)} characters")
-        if not text:
-            print("No text extracted from PDF. It may be image-based.")
-            return []
-        # Heuristic: split entries based on visual spacing or line structure
-        potential_entries = re.split(r'\n(?=[A-Z].{5,})', text)
-        clean_entries = [entry.strip() for entry in potential_entries if len(entry.strip()) > 200]
-        print(f"Extracted {len(clean_entries)} entries from PDF.")
-        if not clean_entries:
-            print("No entries met the length criteria. First 500 chars of text:")
-            print(text[:500])
-        return clean_entries
+        entries = re.split(r"\n(?=Author:)", text)
+        entries = [entry.strip() for entry in entries if len(entry.strip()) > 300]
+        print(f"Extracted {len(entries)} entries from PDF.")
+        return entries
     except Exception as e:
         print(f"Error in extract_entries: {e}")
         return []
 
-# Step 3: Score and rank entries
+# Step 3: Metadata extractor
+def extract_metadata(entry):
+    """Extract metadata from an entry."""
+    metadata = {}
+    # Authors
+    author_match = re.search(r'Author:\s*(.+?)\s*(?=Subject:|Is Part Of:|Description:|$)', entry, re.DOTALL)
+    metadata["authors"] = author_match.group(1).strip() if author_match else "Unknown"
+    # DOI
+    doi_match = re.search(r'(10\.\d{4,9}/[^\s";]+)', entry)
+    metadata["doi"] = doi_match.group(1) if doi_match else "Unknown"
+    # Publisher
+    publisher_match = re.search(r'Publisher:\s*(.+)', entry)
+    metadata["publisher"] = publisher_match.group(1).strip() if publisher_match else "Unknown"
+    # Year
+    year_match = re.search(r'(\b20[1-2][0-9]\b)', entry)
+    metadata["year"] = year_match.group(1) if year_match else "Unknown"
+    # Description
+    desc_match = re.search(r'(Description|Abstract):\s*(.+?)(?=\n[A-Z][a-z]+:|$)', entry, re.DOTALL)
+    metadata["description"] = desc_match.group(2).strip() if desc_match else "No description found"
+    return metadata
+
+# Step 4: Scoring
 def rank_entries(entries, top_n=10):
+    """Rank entries by keyword score."""
     try:
-        scored_entries = [(entry, keyword_score(entry)) for entry in entries]
-        scored_entries = sorted(scored_entries, key=lambda x: x[1], reverse=True)
-        return scored_entries[:top_n]
+        scored = [(entry, keyword_score(entry)) for entry in entries]
+        scored.sort(key=lambda x: x[1], reverse=True)
+        return scored[:top_n]
     except Exception as e:
         print(f"Error in rank_entries: {e}")
         return []
 
-# Step 4: Plot scores
-def plot_scores(ranked):
+# Step 5: Save top results to both CSV and TXT
+def save_top_results_to_files(ranked_entries):
+    """Save top study results to both CSV and TXT formats."""
     try:
-        scores = [score for _, score in ranked]
-        ranks = range(1, len(ranked) + 1)
-        plt.bar(ranks, scores, color='skyblue')
-        plt.xlabel("Rank")
-        plt.ylabel("Keyword Score")
-        plt.title("Top Entries by Keyword Score")
-        plt.savefig("scores_plot.png")
-        plt.close()
-        print("Plot saved to scores_plot.png")
+        with open("results.csv", "w", newline="", encoding="utf-8") as f_csv, \
+             open("results.txt", "w", encoding="utf-8") as f_txt:
+            writer = csv.writer(f_csv)
+            writer.writerow(["Rank", "Score", "Authors", "DOI", "Publisher", "Description"])
+            for i, (entry, score) in enumerate(ranked_entries, 1):
+                meta = extract_metadata(entry)
+                authors = meta["authors"]
+                doi = meta["doi"]
+                publisher = meta["publisher"]
+                description = meta["description"][:300]
+                # Write to CSV
+                writer.writerow([i, score, authors, doi, publisher, description])
+                # Write to TXT
+                f_txt.write(f"--- Top {i} Study (Score: {score}) ---\n")
+                f_txt.write(f"Authors   : {authors}\n")
+                f_txt.write(f"DOI       : {doi}\n")
+                f_txt.write(f"Publisher : {publisher}\n")
+                f_txt.write(f"Description: {description}\n\n")
+        print("✅ Results saved to results.csv and results.txt")
     except Exception as e:
-        print(f"Error in plot_scores: {e}")
+        print(f"❌ Error saving results: {e}")
 
-# Step 5: Run analysis, save to CSV, and plot
+# Step 6: Main analysis and printing
 def analyze_pdf_for_top_studies(pdf_path, top_n=10):
+    """Main function to select and save top 10 studies."""
     try:
         entries = extract_entries(pdf_path)
         ranked = rank_entries(entries, top_n)
-        plot_scores(ranked)  # Generate plot
-        with open("results.csv", "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["Rank", "Score", "Entry"])
-            for i, (entry, score) in enumerate(ranked, 1):
-                writer.writerow([i, score, entry[:1000]])
-                print(f"--- Top {i} Study (Score: {score}) ---\n")
-                print(entry[:1000], "...")
-                print("\n" + "="*80 + "\n")
-        print(f"Results saved to results.csv")
+        for i, (entry, score) in enumerate(ranked, 1):
+            meta = extract_metadata(entry)
+            print(f"--- Top {i} Study (Score: {score}) ---")
+            print(f"Authors   : {meta['authors']}")
+            print(f"DOI       : {meta['doi']}")
+            print(f"Publisher : {meta['publisher']}")
+            print(f"Description: {meta['description'][:300]}")
+        save_top_results_to_files(ranked)
+        print("\nSelection complete. Results saved to:")
+        print("- results.csv (top 10 metadata)")
+        print("- results.txt (top 10 metadata)")
     except Exception as e:
-        print(f"Error in analyze_pdf_for_top_studies: {e}")
+        print(f"❌ Error in analyze_pdf_for_top_studies: {e}")
 
-# Example usage
+# Run it
 if __name__ == "__main__":
-    pdf_file_path = "Ex Libris Discovery - privacy-Preserving Techniques in Federated Learning for Secure Healthcare Data Sharing.pdf"
-    try:
-        print(f"Opening PDF: {pdf_file_path}")
-        analyze_pdf_for_top_studies(pdf_file_path)
-    except Exception as e:
-        print(f"Error: {e}")
+    pdf_path = "Ex Libris Discovery - privacy-Preserving Techniques in Federated Learning for Secure Healthcare Data Sharing.pdf"
+    print(f"Opening PDF: {pdf_path}")
+    analyze_pdf_for_top_studies(pdf_path)

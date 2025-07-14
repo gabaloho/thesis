@@ -1,0 +1,33 @@
+PRIVACY-PRESERVING FL IN HEALTHCARE: TOP 10 SUMMARY
+============================================================
+
+Total Studies Analyzed: 8
+
+TOP TECHNIQUES:
+- HE: 8 studies
+- Blockchain: 3 studies
+- DP: 2 studies
+- TEE: 1 studies
+
+REGULATORY COMPLIANCE: 25.0%
+
+TOP 3 STUDIES:
+1. Choudhury, Ananya ; Volmer, Leroy ; Martin, Frank ; Fijten, Rianne ; Wee, Leonard ;
+Dekker, Andre ; Soest, Johan van
+   Techniques: DP, HE, Blockchain
+   Accuracy: Not stated
+   Compliance: GDPR, HIPAA
+
+2. Rehman, Abdur ; Abbas, Sagheer ; Khan, M.A ; Ghazal, Taher M ; Adnan, Khan
+Muhammad ; Mosavi, Amir
+   Techniques: HE, Blockchain
+   Accuracy: 18.00%
+   Compliance: None
+
+3. Park, Soyoung ; Lee, Junyoung ; Harada, Kaho ; Chi, Jeonghee
+   Techniques: HE
+   Accuracy: Not stated
+   Compliance: None
+
+
+FULL RESULTS AVAILABLE IN: top10_analysis.csv

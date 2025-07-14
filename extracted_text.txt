@@ -1,0 +1,774 @@
+=== ARTICLE (Score: 89.0) ===
+Authors: Choudhury, Ananya ; Volmer, Leroy ; Martin, Frank ; Fijten, Rianne ; Wee, Leonard ;
+Dekker, Andre ; Soest, Johan van
+DOI: 10.2196/60847
+Publisher: Canada
+Text:
+challenges of data privacy and enables collaborative model development, paving the way for the widespread adoption of deep
+learning–based tools in the medical domain and beyond. The introduction of the secure aggregation server implied that data
+leakage problems in FL can be prevented by careful design decisions of the infrastructure.
+Trial Registration: ClinicalTrials.gov NCT05775068; https://clinicaltrials.gov/study/NCT05775068
+(JMIR AI 2025;4:e60847) doi: 10.2196/60847
+KEYWORDS
+gross tumor volume segmentation; federated learning infrastructure; privacy-preserving technology; cancer; deep learning;
+artificial intelligence; lung cancer; oncology; radiotherapy; imaging; data protection; data privacy
+Introduction
+Federated learning (FL) allows the collaborative development
+of artificial intelligence models using large datasets, without
+the need to share individual patient-level data [1-4]. In FL,
+partial models trained on separate datasets are shared, but not
+the data itself, hence a global model is derived from the
+collective set of partial models. This study introduces an
+innovative FL framework known as the Personal Health Train
+(PHT) that includes the procedural, technical, and governance
+components needed to implement FL on real-world health care
+data, including the training of deep learning neural networks
+[5]. The PHT infrastructure is supported by a free and
+open-source infrastructure known as “priVAcy preserviNg
+federaTed leArninG infrastructurE for Secure Insight
+eXchange,” that is, Vantage6 [6]. We will describe in detail an
+architecture for training a deep learning model in a federated
+way with 12 institutional partners located in different parts of
+the world.
+Sharing patient data between health care institutions is tightly
+regulated due to concerns about patient confidentiality and the
+potential for misuse of data. Data protection laws—including
+the European Union’s General Data Protection Regulations;
+Health Insurance Portability and Accountability Act of 1996
+(HIPAA) in the United States; and similar regulations in China,
+India, Brazil, and many other countries—place strict conditions
+on the sharing and secondary use of patient data [7].
+Incompatibilities between laws and variations in the
+interpretation of such laws lead to strong reluctance about
+sharing data across organizational and jurisdictional boundaries
+[8-10].
+To address the challenges of data privacy, a range of approaches
+have been published in the literature. Differential privacy,
+homomorphic encryption, and FL comprise a family of
+applications known as “privacy enhancing technologies”
+[11-13]. The common goal of privacy-enhancing technologies
+is to unlock positively impactful societal, economic, and clinical
+knowledge by analyzing data en masse, while obscuring the
+identity of study subjects that make up the dataset. Academic
+institutions are more frequently setting up controlled workspaces
+(eg, secure research environments [SREs]), where multiple
+researchers can collaborate on data analysis within a common
+cloud computing environment, but without allowing access to
+the data from outside the SRE desktop; however, this assumes
+that all the data needed have been transferred into the SRE in
+the first place [14,15]. Similarly, the National Institutes of
+Health has set up an “Imaging Data Commons” to provide
+secure access to a large collection of publicly available cancer
+imaging data colocated with analysis tools and resources [16].
+Other researchers have shown that blockchain encryption
+technology can be used to securely store and share sensitive
+medical data [17]. Blockchain ensures data integrity by
+maintaining an audit trail of every transaction, while zero trust
+principles make sure the medical data are encrypted and only
+authenticated users and devices interact with the network [18].
+From a procedural point of view, the PHT manifesto for FL
+rules out the sharing of individual patient-level data between
+institutions, no matter if the patient data have been deidentified
+or encrypted [19]. The privacy-by-design principle here may
+be referred to as “safety in numbers,” that is, any single
+individual’s data values are obscured, by computing either the
+descriptive statistics or the partial model, over multiple patients.
+PHT allows sufficiently adaptable methods of model training,
+such as iterative numerical approximation (eg, bisection) or
+federated averaging (FedAvg [20]), and does not mandatorily
+require model gradients or model residuals, which are
+well-known avenues of privacy attacks [21-24]. Governance is
+essential with regards to compliance with privacy legislation
+and division of intellectual property between collaboration
+partners. A consortium agreement template for PHT has been
+made openly accessible [25], which is based on our current
+consortium ARGOS (artificial intelligence for gross tumor
+volume segmentation) [26]. Technologically, PHT requires 3
+interdependent components to be installed—“tracks” are
+protected telecommunications channels that connect partner
+institutions, “trains” are Docker containerized software apps
+that execute a statistical analysis that all partners have agreed
+upon, and “stations” are the institutional data repositories that
+hold the patient data [23]. It is this technological
+infrastructure—the tracks, trains, and stations—that is supported
+by the aforementioned Vantage6 software, for which detailed
+stand-alone documentation exists [27].
+The paper proposes a federated deep learning infrastructure
+based on the PHT manifesto [19], which provides a governance
+and ethical, legal, and social implications framework for
+conducting FL studies across geographically diverse data
+providers. The research aims to showcase a custom FL
+infrastructure using the open-source Vantage6 platform,
+detailing its technological foundations and implementation
+specifics. The paper emphasizes the significance of the
+implemented custom federation strategy, which maintains a
+strict separation between intermediate models from both internal
+and external user access. This approach is crucial for
+safeguarding the security and privacy of sensitive patient data,
+JMIR AI 2025 | vol. 4 | e60847 | p. 2
+https://ai.jmir.org/2025/1/e60847
+(page number not for citation purposes)
+Choudhury et al
+JMIR AI
+XSL•FO
+RenderX
+
+
+=== ARTICLE (Score: 74.0) ===
+Authors: Rehman, Abdur ; Abbas, Sagheer ; Khan, M.A ; Ghazal, Taher M ; Adnan, Khan
+Muhammad ; Mosavi, Amir
+DOI: 10.1016/j.compbiomed.2022.106019
+Publisher: United States: Elsevier Ltd
+Text:
+Computers in Biology and Medicine 150 (2022) 106019
+Available online 21 September 2022
+0010-4825/© 2022 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).
+A secure healthcare 5.0 system based on blockchain technology entangled 
+with federated learning technique 
+Abdur Rehman a, Sagheer Abbas a, M.A. Khan b, Taher M. Ghazal c,d, 
+Khan Muhammad Adnan e,*, Amir Mosavi f,g,h 
+a School of Computer Science, National College of Business Administration and Economics, Lahore, 54000, Pakistan 
+b Riphah School of Computing and Innovation, Faculty of Computing, Riphah International University, Lahore Campus, Lahore, 54000, Pakistan 
+c School of Information Technology, Skyline University College, University City Sharjah, 1797, Sharjah, United Arab Emirates 
+d Center for Cyber Security, Faculty of Information Science and Technology, Universiti Kebangsaan Malaysia (UKM), 43600, Bangi, Selangor, Malaysia 
+e Department of Software, Gachon University, Seongnam, 13120, Republic of Korea 
+f Institute of Information Engineering, Automation and Mathematics, Slovak University of Technology in Bratislava, 81107 Bratislava, Slovakia 
+g John von Neumann Faculty of Informatics, Obuda University, 1034, Budapest, Hungary 
+h Faculty of Civil Engineering, TU-Dresden, 01062, Dresden, Germany   
+A R T I C L E  I N F O   
+Keywords: 
+Federated learning 
+Blockchain 
+IoMT 
+Healthcare 5.0 
+Medical sensors 
+A B S T R A C T   
+In recent years, the global Internet of Medical Things (IoMT) industry has evolved at a tremendous speed. Se­
+curity and privacy are key concerns on the IoMT, owing to the huge scale and deployment of IoMT networks. 
+Machine learning (ML) and blockchain (BC) technologies have significantly enhanced the capabilities and fa­
+cilities of healthcare 5.0, spawning a new area known as “Smart Healthcare.” By identifying concerns early, a 
+smart healthcare system can help avoid long-term damage. This will enhance the quality of life for patients while 
+reducing their stress and healthcare costs. The IoMT enables a range of functionalities in the field of information 
+technology, one of which is smart and interactive health care. However, combining medical data into a single 
+storage location to train a powerful machine learning model raises concerns about privacy, ownership, and 
+compliance with greater concentration. Federated learning (FL) overcomes the preceding difficulties by utilizing 
+a centralized aggregate server to disseminate a global learning model. Simultaneously, the local participant keeps 
+control of patient information, assuring data confidentiality and security. This article conducts a comprehensive 
+analysis of the findings on blockchain technology entangled with federated learning in healthcare. 5.0. The 
+purpose of this study is to construct a secure health monitoring system in healthcare 5.0 by utilizing a blockchain 
+technology and Intrusion Detection System (IDS) to detect any malicious activity in a healthcare network and 
+enables physicians to monitor patients through medical sensors and take necessary measures periodically by 
+predicting diseases. The proposed system demonstrates that the approach is optimized effectively for healthcare 
+monitoring. In contrast, the proposed healthcare 5.0 system entangled with FL Approach achieves 93.22% ac­
+curacy for disease prediction, and the proposed RTS-DELM-based secure healthcare 5.0 system achieves 96.18% 
+accuracy for the estimation of intrusion detection.   
+1. Introduction 
+The IoMT is an emerging technology that is rapidly expanding [1]. 
+The Internet of Things (IoT) enables the connection of numerous objects 
+to collect data that may be used to enhance human health, productivity, 
+and effectiveness [2–4]. Smart cities, smart grids, and smart houses are 
+well-established concepts that are transforming our daily lives [5–7]. 
+Among the most potential new technical approaches for addressing the 
+global health equality gap is the use of an IoT-based monitoring system 
+of patient health [8]. Another name for these IoT technologies is the 
+IoMT. In this study, the terms IoT and IoMT are used interchangeably, 
+even though the study will focus on the healthcare industry. Further­
+more, the Internet of Things has the potential to improve healthcare and 
+public safety significantly [9]. Individuals can obtain information on 
+* Corresponding author. 
+E-mail addresses: arbhatti@ncbae.edu.pk (A. Rehman), dr.sagheer@ncbae.edu.pk (S. Abbas), adnan.khan@riphah.edu.pk (M.A. Khan), taher.ghazal@ 
+skylineuniversity.ac.ae (T.M. Ghazal), adnan@gachon.ac.kr (K.M. Adnan), amirhosein.mosavi@stuba.sk (A. Mosavi).  
+Contents lists available at ScienceDirect 
+Computers in Biology and Medicine 
+journal homepage: www.elsevier.com/locate/compbiomed 
+https://doi.org/10.1016/j.compbiomed.2022.106019 
+Received 1 July 2022; Received in revised form 4 August 2022; Accepted 20 August 2022   
+
+
+=== ARTICLE (Score: 69.0) ===
+Authors: Park, Soyoung ; Lee, Junyoung ; Harada, Kaho ; Chi, Jeonghee
+DOI: 10.3390/electronics14010177
+Publisher: Basel: MDPI AG
+Text:
+Academic Editor:
+Aryya Gangopadhyay
+Received: 13 November 2024
+Revised: 29 December 2024
+Accepted: 30 December 2024
+Published: 3 January 2025
+Citation: Park, S.; Lee, J.; Harada, K.;
+Chi, J. Masking and Homomorphic
+Encryption-Combined Secure
+Aggregation for Privacy-Preserving
+Federated Learning. Electronics 2025,
+14, 177. https://doi.org/10.3390/
+electronics14010177
+Copyright: © 2025 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license
+(https://creativecommons.org/
+licenses/by/4.0/).
+Article
+Masking and Homomorphic Encryption-Combined Secure
+Aggregation for Privacy-Preserving Federated Learning
+Soyoung Park *
+, Junyoung Lee, Kaho Harada and Jeonghee Chi
+Department of Computer Science and Engineering, Konkuk University, Seoul 05029, Republic of Korea;
+junzero@konkuk.ac.kr (J.L.); mamt4825@konkuk.ac.kr (K.H.); jhchi@konkuk.ac.kr (J.C.)
+* Correspondence: soyoungpark@konkuk.ac.kr; Tel.: +82-2-450-0482
+Abstract: Secure aggregation of local learning model parameters is crucial for achieving
+privacy-preserving federated learning. This paper presents a novel and practical aggre-
+gation method that effectively combines the advantages of masking-based aggregation
+with those of homomorphic encryption-based techniques. Each node conceals its local
+parameters using a randomly selected mask, independently chosen, thereby eliminating
+the need for additional computations to generate or exchange mask values with other
+nodes. Instead, each node homomorphically encrypts its random mask using its own en-
+cryption key. During each federated learning round, nodes send their masked parameters
+and the homomorphically encrypted mask to the federated learning server. The server
+then aggregates these updates in an encrypted state, directly calculating the average of
+actual local parameters across all nodes without the necessity to decrypt the aggregated
+result separately. To facilitate this, we introduce a new multi-key homomorphic encryption
+technique tailored for secure aggregation in federated learning environments. Each node
+uses a different encryption key to encrypt its mask value. Importantly, the ciphertext
+of each mask includes a partial decryption component from the node, allowing the col-
+lective sum of encrypted masks to be automatically decrypted once all are aggregated.
+Consequently, the server computes the average of the actual local parameters by simply
+subtracting the decrypted total sum of mask values from the cumulative sum of the masked
+local parameters. Our approach effectively eliminates the need for interactions between
+nodes and the server for mask generation and sharing, while addressing the limitation
+of a single key homomorphic encryption. Moreover, the proposed aggregation process
+completes the global model update in just two interactions (in the absence of dropouts),
+significantly simplifying the aggregation procedure. Utilizing the CKKS (Cheon-Kim-Kim-
+Song) homomorphic encryption scheme, our method ensures efficient aggregation without
+compromising security or accuracy. We demonstrate the accuracy and efficiency of the
+proposed method through varied experiments on MNIST data.
+Keywords: secure aggregation; federated learning; homomorphic encryption; multi-key
+homomorphic encryption
+1. Introduction
+Federated learning [1] effectively protects the privacy of each user’s local data by only
+requiring the transmission of local model parameters, not the local data itself. However,
+local data can still be deduced from these parameters using the inverse attack [2–4], ne-
+cessitating secure transmission of local parameters to the federated learning server. To
+conceal the local model parameters, several techniques have been proposed, including
+Electronics 2025, 14, 177
+https://doi.org/10.3390/electronics14010177
+
+
+=== ARTICLE (Score: 64.0) ===
+Authors: Ghazal, Taher M. ; Islam, Shayla ; Hasan, Mohammad Kamrul ; Abu-Shareha, Ahmad A. ;
+Mokhtar, Umi A. ; Khan, M. Attique ; Baili, Jamel ; Saeed, Ali Q ; Bhattt, Mohammed Wasim ;
+Ahmad, Munir
+DOI: 10.1109/TCE.2025.3572629
+Publisher: IEEE
+Text:
+1 
+> REPLACE THIS LINE WITH YOUR MANUSCRIPT ID NUMBER (DOUBLE-CLICK HERE TO EDIT) < 
+ 
+Generative Federated Learning with Small and Large 
+Models In Consumer Electronics for Privacy-
+preserving Data Fusion in Healthcare Internet of 
+Things 
+Taher M. Ghazal, Senior Member, IEEE, Shayla Islam, Senior Member, IEEE,  Mohammad Kamrul Hasan, Senior 
+Member, IEEE, Ahmad A. Abu-Shareha, Umi A. Mokhtar, M. Attique Khan, Member, IEEE, Jamel Baili, Ali Q 
+Saeed, Mohammed Wasim Bhattt, and Munir Ahmad
+    Abstract—Healthcare Internet of Things (HIoT) requires 
+large-scale privacy features to ensure maximum security in 
+sharing sensitive physiological data in consumer electronics. 
+Recent approaches utilize the fusion concept to provide 
+maximum privacy in health data sharing. Embedded signing data 
+fusion with the health observed data ensures privacy preserved 
+sharing across heterogeneous medical consumer devices for 
+diagnosis. This article proposes a Dependency-correlated Data 
+Fusion Scheme (DcDFS) to maximize the privacy of the health 
+data-sharing process. The proposed scheme prepares separate 
+key signing procedures using triple-DES (data encryption 
+standard) to embed with the accumulated health data. The fusion 
+process is carried out by defining key headers and integrity 
+footers for authentication and verification. Therefore, the fusion 
+generates a combined sequence of linear authentication and 
+validation procedures enclosing the health data. In this scheme, 
+the role of federated learning is to prevent permuted sequences 
+for the same health data. This research integrates Small 
+ 
+ ―This work was supported bythe Centre of Excellence for Research, Value 
+Innovation, and Entrepreneurship(CERVIE) at UCSI University for funding 
+this research project through the Research Grant with the project code: T2S-
+2024/008, and T2S-2025/008. The authors extend their appreciation to the 
+Deanship of Research and Graduate Studies at King Khalid University for 
+funding this work through Large Research Project   under grant number  
+RGP.2/275/46.  
+ Corresponding author: Shayla Islam (e-mail: shayla@ucsiuniversity.edu.my);  
+Mohammad Kamrul Hasan (e-mail: hasankamrul@ieee.org; Munir Ahmad (e-mail: 
+munirahmad@ieee.org). 
+T. M. Ghazal is with the Center for Cyber Security, Faculty of Information 
+Science and Technology, Universiti Kebangsaan Malaysia (UKM), and Department 
+of Networks and Cybersecurity, Hourani Center for Applied Scientific Research, 
+Al-Ahliyya Amman University, Amman, Jordan. (e-mail: taher.ghazal@ieee.org) 
+Shayla Islam is with Institute of Computer Science and Digital Innovation, 
+UCSI 
+University, 
+56000 
+Kuala 
+Lumpur, 
+Malaysia. 
+(e-mail: 
+shayla@ucsiuniversity.edu.my)     
+ M.K. Hasan, and U.A. Mokhtar  are with the Center for Cyber Security, 
+Faculty of Information Science and Technology, Universiti Kebangsaan Malaysia 
+(UKM). (e-mail: hasankamrul@ieee.org; umimokhtar@ukm.edu.my). 
+Ahmad A. Abu-Shareha is with Department of Data Science and Artificial 
+Intelligence, Hourani Center for Applied Scientific Research, Al-Ahliyya Amman 
+University, Amman, Jordan. (e-mail: a.abushareha@ammanu.edu.jo). 
+M. Attique Khan is with Center of AI, Prince Mohammad bin Fahd  University, 
+Saudi Arabia.(e-mail: mkhan3@pmu.edu.sa). 
+Jamel Baili is with Department of Computer Engineering, College of Computer 
+Science, King Khalid University, Abha 61413, Saudi Arabia. (Jabaili@kku.edu.sa)  
+Ali Q Saeed is with the Computer Center, Northern Technical University, Ninevah, 
+Iraq. (e-mail: ali.qasim@ntu.edu.iq)  
+Mohammed Wasim Bhatt is with the Model Institute of Engineering and 
+Technology, Jammu, India (wasimmohammad71@gmail.com)  
+Munir Ahmad is with College of Informatics, Korea University, Seoul 02841, 
+Republic of Korea. (e-mail: munirahmad@ieee.org)  
+Language Model (SLM) and Large Language Model (LLM) into 
+the federated learning module to support secure, scalable, and 
+intelligent healthcare data sharing. Their collaboration enhances 
+context-aware 
+training 
+while 
+preserving 
+privacy 
+across 
+decentralized, encrypted environments. A similar sequence 
+mapped between the header and footer is responsible for 
+discarding unauthorized data handling. The learning process 
+verifies the permutation for many-to-one header to footer and 
+vice versa. Therefore, the proposed fusion scheme generates a 
+linear dependency between the actual and security-related data 
+for maximum privacy. The proposed scheme achieves the 
+following: the computation time is confined by 12.424%, the 
+privacy leakage by 12.923%, and the computation efficiency is 
+improved by 11.46%, as observed under the maximum 
+sequences. 
+ 
+Index Terms—Data Fusion, Federated Learning, Healthcare IoT, 
+Privacy-Preserving, Triple DES.  
+I. BACKGROUND 
+LOCK-BASED 
+ranked 
+retrieval 
+protects 
+complex 
+consumer electronics healthcare IoT data systems by 
+grouping data into encrypted cloud-based chunks. The 
+approach improves privacy by assuring data integrity 
+and limiting unauthorized access to sensitive healthcare 
+information [1]. Advanced encryption algorithms reduce 
+computational load while ensuring good retrieval accuracy. 
+Scalability and adaptation to complicated IoT contexts make 
+the technique appropriate for large-scale healthcare systems 
+[2]. Efficient encryption allows seamless integration with data 
+protection rules that preserve patient information. The 
+architecture prioritizes real-time data access while maintaining 
+security and utility [3]. By encrypting at granular levels, the 
+technology 
+outperforms 
+existing 
+methods 
+regarding 
+dependability and compliance. Its modular structure ensures 
+consistent performance across multiple datasets and usage 
+scenarios [4]. Security measures lower the risk of breaches 
+while ensuring system reliability under peak operating 
+demands. Compatibility with modern healthcare IoT systems 
+provides a broad range of potential applications [5]. An 
+increase in the need for cross-domain analytics that protect 
+patients' privacy has coincided with the explosion in 
+healthcare data [6]. 
+    A decentralized privacy-preserving system improves data 
+B 
+This article has been accepted for publication in IEEE Transactions on Consumer Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TCE.2025.3572629
+© 2025 IEEE. All rights reserved, including rights for text and data mining and training of artificial intelligence and similar technologies. Personal use is permitted,
+but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: University of East London. Downloaded on July 11,2025 at 19:22:17 UTC from IEEE Xplore.  Restrictions apply. 
+
+
+=== ARTICLE (Score: 61.0) ===
+Authors: Pati, Sarthak ; Kumar, Sourav ; Varma, Amokh ; Edwards, Brandon ; Lu, Charles ; Qu,
+Liangqiong ; Wang, Justin J. ; Lakshminarayanan, Anantharaman ; Wang, Shih-han ; Sheller, Micah
+J. ; Chang, Ken ; Singh, Praveer ; Rubin, Daniel L. ; Kalpathy-Cramer, Jayashree ; Bakas, Spyridon
+DOI: 10.1016/j.patter.2024.100974
+Publisher: United States: Elsevier Inc
+Text:
+Review
+Privacy preservation
+for federated learning in health care
+Sarthak Pati,1,2,15 Sourav Kumar,3,15 Amokh Varma,3,15 Brandon Edwards,4,15 Charles Lu,3,5 Liangqiong Qu,6
+Justin J. Wang,7 Anantharaman Lakshminarayanan,8 Shih-han Wang,4 Micah J. Sheller,4 Ken Chang,9 Praveer Singh,10
+Daniel L. Rubin,7 Jayashree Kalpathy-Cramer,10,16 and Spyridon Bakas1,2,11,12,13,14,16,*
+1Center for Federated Learning in Medicine, Indiana University, Indianapolis, IN, USA
+2Division of Computational Pathology, Department of Pathology and Laboratory Medicine, Indiana University School of Medicine,
+Indianapolis, IN, USA
+3Department of Radiology, Athinoula A. Martinos Center for Biomedical Imaging, Massachusetts General Hospital, Boston, MA, USA
+4Intel Corporation, Santa Clara, CA, USA
+5Center for Clinical Data Science, Massachusetts General Hospital and Brigham and Women’s Hospital, Boston, MA, USA
+6Department of Statistics and Actuarial Science, University of Hong Kong, Hong Kong, China
+7Department of Biomedical Data Science, Radiology, and Medicine (Biomedical Informatics), Stanford University, Stanford, CA, USA
+8Institute for Infocomm Research, Agency for Science Technology and Research (A*STAR), Singapore, Singapore
+9Department of Radiology, Stanford University, Stanford, CA, USA
+10University of Colorado School of Medicine, Aurora, CO, USA
+11Department of Biostatistics and Health Data Science, Indiana University School of Medicine, Indianapolis, IN, USA
+12Department of Radiology and Imaging Sciences, Indiana University School of Medicine, Indianapolis, IN, USA
+13Department of Neurological Surgery, Indiana University School of Medicine, Indianapolis, IN, USA
+14Department of Computer Science, Luddy School of Informatics, Computing, and Engineering, Indiana University, Indianapolis, IN, USA
+15These authors contributed equally
+16Senior authors
+*Correspondence: spbakas@iu.edu
+https://doi.org/10.1016/j.patter.2024.100974
+SUMMARY
+Artificial intelligence (AI) shows potential to improve health care by leveraging data to build models that
+can inform clinical workflows. However, access to large quantities of diverse data is needed to develop
+robust generalizable models. Data sharing across institutions is not always feasible due to legal, security,
+and privacy concerns. Federated learning (FL) allows for multi-institutional training of AI models, obvi-
+ating data sharing, albeit with different security and privacy concerns. Specifically, insights exchanged
+during FL can leak information about institutional data. In addition, FL can introduce issues when there
+is limited trust among the entities performing the compute. With the growing adoption of FL in health
+care, it is imperative to elucidate the potential risks. We thus summarize privacy-preserving FL literature
+in this work with special regard to health care. We draw attention to threats and review mitigation ap-
+proaches. We anticipate this review to become a health-care researcher’s guide to security and privacy
+in FL.
+THE BIGGER PICTURE
+Significant improvements can be made to clinical AI applications when multiple
+health-care institutions collaborate to build models that leverage large and diverse datasets. Federated
+learning (FL) provides a method for such AI model training, where each institution shares only model updates
+derived from their private training data, rather than the explicit patient data. This has been demonstrated to
+advance the state of the art for many clinical AI applications. However, open and persistent federations bring
+up the question of trust, and model updates have raised considerations of possible information leakage. Prior
+work has gone into understanding the inherent privacy risks and into developing mitigation techniques.
+Focusing on FL in health care, we review the privacy risks and the costs and limitations associated with
+state-of-the-art mitigations. We hope to provide a guide to health-care researchers seeking to engage in
+FL as a new paradigm of secure and private collaborative AI.
+ll
+OPEN ACCESS
+Patterns 5, July 12, 2024 ª 2024 The Authors. Published by Elsevier Inc.
+1
+This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/by-nc/4.0/).
+
+
+=== ARTICLE (Score: 60.0) ===
+Authors: Shen, Jiachen ; Zhao, Yekang ; Huang, Shitao ; Ren, Yongjun
+
+02/07/2025, 23:41
+Page 16 of 31
+https://uel.primo.exlibrisgroup.com/discovery/search?query=any,…ndate,include,2015%7C,%7C2025&offset=0&came_from=pagination_3_2
+DOI: 10.3390/electronics13224478
+Publisher: Basel: MDPI AG
+Text:
+Citation: Shen, J.; Zhao, Y.; Huang, S.;
+Ren, Y. Secure and Flexible
+Privacy-Preserving Federated
+Learning Based on Multi-Key Fully
+Homomorphic Encryption. Electronics
+2024, 13, 4478. https://doi.org/
+10.3390/electronics13224478
+Academic Editor: Subir Halder
+Received: 9 October 2024
+Revised: 29 October 2024
+Accepted: 13 November 2024
+Published: 14 November 2024
+Copyright: © 2024 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+electronics
+Article
+Secure and Flexible Privacy-Preserving Federated Learning
+Based on Multi-Key Fully Homomorphic Encryption
+Jiachen Shen, Yekang Zhao, Shitao Huang and Yongjun Ren *
+School of Computer Science, School of Cyber Science and Engineering, Nanjing University of Information Science
+and Technology, Nanjing 210044, China
+* Correspondence: 002315@nuist.edu.cn
+Abstract: Federated learning avoids centralizing data in a central server by distributing the model
+training process across devices, thus protecting privacy to some extent. However, existing research
+shows that model updates (e.g., gradients or weights) exchanged during federated learning may still
+indirectly leak sensitive information about the original data. Currently, single-key homomorphic
+encryption methods applied in federated learning cannot solve the problem of privacy leakage that
+may be caused by the collusion between the participant and the federated learning server, whereas
+existing privacy-preserving federated learning schemes based on multi-key homomorphic encryption
+in semi-honest environments have deficiencies and limitations in terms of security and application
+conditions. To this end, this paper proposes a privacy-preserving federated learning scheme based
+on multi-key fully homomorphic encryption to cope with the potential risk of privacy leakage in
+traditional federated learning. We designed a multi-key fully homomorphic encryption scheme,
+mMFHE, that encrypts by aggregating public keys and requires all participants to jointly participate
+in decryption sharing, thus ensuring data security and privacy. The proposed privacy-preserving
+federated learning scheme encrypts the model updates through multi-key fully homomorphic en-
+cryption, ensuring confidentiality under the CRS model and in a semi-honest environment. As a
+fully homomorphic encryption scheme, mMFHE supports homomorphic addition and homomorphic
+multiplication for more flexible applications. Our security analysis proves that the scheme can
+withstand collusive attacks by up to N −1 users and servers, where N is the total number of users.
+Performance analysis and experimental results show that our scheme reduces the complexity of the
+NAND gate, which reduces the computational load and improves the efficiency while ensuring the
+accuracy of the model.
+Keywords: privacy preservation; federated learning; multi-key fully homomorphic encryption
+1. Introduction
+The training of machine learning models usually requires the centralization of dis-
+persed data to a single server or data center, a practice that not only presents technical
+challenges, such as communication costs and latency for large data transfers, but more
+importantly also raises significant concerns about privacy and data protection [1,2]. With
+the popularity of smartphones and various smart devices, a significant volume of indi-
+vidual data have been accumulated on the devices, which will be of great value if we can
+make use of them to enhance the quality of service and user experience under the premise
+of protecting privacy [3]. Google’s research team developed the federated learning (FL)
+concept in response to these challenges [4,5]. The fundamental premise of FL is that every
+device (or node) trains a model locally with the data it holds, and only sends updates to
+the model (e.g., gradient or parameter updates) to the server. The server is tasked with
+aggregating the aforementioned updates, updating the global model, and subsequently
+disseminating the enhanced model to the participating devices. In this way, the data are
+not transmitted from the local device, which serves to safeguard the user’s privacy. Since
+Electronics 2024, 13, 4478. https://doi.org/10.3390/electronics13224478
+https://www.mdpi.com/journal/electronics
+
+
+=== ARTICLE (Score: 58.0) ===
+Authors: Vaijainthymala Krishnamoorthy, Mahesh
+DOI: 10.2196/70100
+Publisher: Canada: JMIR Publications
+Text:
+and enhancing latent space interpretability. These developments position LSP as a crucial tool for advancing ethical AI
+practices and ensuring responsible technology deployment in privacy-sensitive domains.
+JMIRx Med 2025;6:e70100; doi: 10.2196/70100
+Keywords: privacy-preserving AI; latent space projection; data obfuscation; AI governance; machine learning privacy;
+differential privacy; k-anonymity; HIPAA; GDPR; compliance; data utility; privacy-utility trade-off; responsible AI; medical
+imaging privacy; secure data sharing; artificial intelligence; General Data Protection Regulation; Health Insurance Portability
+and Accountability Act
+Introduction
+Background
+The rapid advancement and widespread adoption of arti-
+ficial intelligence (AI) across critical sectors of society
+have ushered in an era of unprecedented data analysis and
+decision-making capabilities. From health care diagnostics to
+financial fraud detection, AI systems are processing increas-
+ingly large volumes of sensitive personal data. However, this
+progress has been accompanied by growing concerns about
+privacy, data protection, and the potential misuse of personal
+information.
+The tension between leveraging data for AI advance-
+ments and protecting individual privacy has become a
+central challenge in the field of AI governance. Traditional
+approaches to data privacy, such as anonymization and
+differential privacy, often struggle to balance the trade-off
+between privacy protection and data utility. As AI sys-
+tems become more sophisticated, there is an urgent need
+for novel privacy-preserving techniques that can protect
+sensitive information without significantly compromising the
+performance of AI models.
+In this research, we introduce data obfuscation through
+latent space projection (LSP), a novel privacy-preserv-
+ing technique designed to address these challenges. LSP
+leverages recent advancements in representation learning
+and adversarial training to create a privacy-preserving data
+transformation pipeline. By projecting raw data into a latent
+space and then reconstructing it with carefully controlled
+information loss, we aim to obfuscate sensitive attributes
+while preserving the overall structure and relationships within
+the data that are crucial for AI model performance.
+This research makes several significant contributions to
+the field of privacy-preserving machine learning. At the
+core of this work, we develop and present a comprehensive
+latent space projection framework, providing detailed insights
+into its theoretical underpinnings, architectural design, and
+practical implementation considerations. We advance the
+field’s measurement capabilities by introducing innovative
+metrics specifically designed to evaluate the critical bal-
+ance between privacy protection and data utility in latent
+space representations. Through rigorous experimentation
+on established benchmark datasets, we demonstrate that
+LSP consistently outperforms traditional privacy-preserving
+approaches across multiple performance dimensions.
+To bridge the gap between theory and practice, we
+showcase LSP’s real-world effectiveness through 2 critical
+case studies in highly sensitive domains: cancer diagnosis
+and financial fraud detection. Understanding the practical
+constraints of deployment, we conduct thorough analyses
+of LSP’s operational characteristics, including latency and
+computational resource requirements. Finally, we explore
+the broader implications of our work, examining how LSP
+contributes to the responsible development of AI systems
+and aligns with emerging global AI governance frameworks,
+providing a foundation for future privacy-preserving AI
+applications.
+The Privacy Challenge in AI
+The exponential growth of data and the increasing sophisti-
+cation of AI models have led to significant advancements
+in various fields. However, this progress has also raised
+critical privacy concerns [1]. AI models, particularly deep
+learning architectures, often require vast amounts of data
+to achieve high performance. This data frequently contains
+sensitive personal information, ranging from medical records
+to financial transactions.
+The potential for privacy breaches in AI systems is
+multifaceted and detailed in the following sections.
+Data Breaches
+Large datasets used for AI training are attractive targets for
+cyberattacks, potentially exposing the sensitive information of
+millions of individuals[2,3].
+Model Inversion Attacks
+Sophisticated attacks can potentially reconstruct training
+data from model parameters, compromising the privacy of
+individuals in the training set [4].
+Membership Inference
+These attacks aim to determine whether a particular data point
+was used in training a model, which can reveal sensitive
+information about individuals [5].
+Attribute Inference
+Even when direct identifiers are removed, AI models
+may inadvertently learn and expose sensitive attributes of
+individuals in their training data [6].
+Unintended Memorization
+Neural networks have been shown to sometimes memo-
+rize specific data points from their training set, potentially
+exposing sensitive information during inference [7].
+JMIRx Med
+Vaijainthymala Krishnamoorthy
+https://med.jmirx.org/2025/1/e70100
+JMIRx Med 2025 | vol. 6 | e70100 | p. 2
+(page number not for citation purposes)
+
+
+=== ARTICLE (Score: 66.0) ===
+Authors: Shalabi, Eman ; Khedr, Walid ; Rushdy, Ehab ; Salah, Ahmad
+DOI: 10.3390/info16030244
+Publisher: Basel: MDPI AG
+Text:
+2546
+IEEE TRANSACTIONS ON CONSUMER ELECTRONICS, VOL. 70, NO. 1, FEBRUARY 2024
+Secure and Privacy-Preserving Decentralized
+Federated Learning for Personalized
+Recommendations in Consumer Electronics Using
+Blockchain and Homomorphic Encryption
+Brij B. Gupta, Senior Member, IEEE, Akshat Gaurav
+, Graduate Student Member, IEEE, and Varsha Arya
+Abstract—Over
+the
+past
+few
+years,
+personalized
+recommendations have emerged as a fundamental component
+of the consumer electronics sector. The rise of decentralized
+federated learning has expanded the horizons of personalized
+recommendations, offering significant potential. Nonetheless,
+the utilization of confidential data from diverse clients raises
+legitimate concerns regarding privacy and security. In response
+to these challenges, we present an innovative framework for
+secure and privacy-preserving decentralized federated learning,
+tailored to personalized recommendations within the consumer
+electronics sector. Our approach strives to facilitate the collective
+contribution of data from multiple clients to the learning
+process while safeguarding their privacy. To accomplish this, we
+harness the power of homomorphic encryption, ensuring that
+clients’ data remains encrypted and impervious to prying eyes.
+Additionally, we leverage blockchain technology to establish
+a secure, decentralized foundation for data exchange and
+management. Through the utilization of blockchain, we empower
+clients to validate the integrity of the learning process, guarantee
+system transparency, and thwart any malicious attempts at
+result manipulation. Our framework is rigorously assessed using
+real-world consumer electronics data, highlighting its capacity to
+provide a secure, decentralized, and privacy-centric solution for
+personalized recommendations. This approach not only enriches
+the user experience but also offers robust safeguards for sensitive
+data.
+Index
+Terms—Personalized
+recommendations,
+federated
+learning,
+decentralized
+learning,
+blockchain,
+homomorphic
+encryption, privacy preservation, security, consumer electronics,
+data sharing.
+Manuscript received 30 April 2023; revised 28 August 2023; accepted
+27 October 2023. Date of publication 8 November 2023; date of current
+version 26 April 2024. This work was supported by the National Science
+and Technology Council (NSTC), Taiwan, under Grant NSTC112-2221-E-
+468-008-MY3. (Corresponding author: Akshat Gaurav; Brij B. Gupta.)
+Brij B. Gupta is with the Department of Computer Science and Information
+Engineering, Asia University, Taichung 413, Taiwan, also with Kyung Hee
+University, Seoul 02447, South Korea, also with the Symbiosis Centre for
+Information Technology, Symbiosis International University, Pune 412115,
+India, and also with the Department of Electrical and Computer Engineering,
+Lebanese American University, Beirut 1102, Lebanon (e-mail: bbgupta@
+asia.edu.tw).
+Akshat Gaurav is with the Computer Science Department, Ronin Institute,
+Montclair, NJ 07043 USA (e-mail: akshat.gaurav@ronininstitute.org).
+Varsha Arya is with the Department of Business Administration, Asia
+University, Taichung 413, Taiwan, also with the Center for Interdisciplinary
+Research, University of Petroleum and Energy Studies, Dehradun 248007,
+India, and also with the University Centre for Research & Development
+(UCRD),
+Chandigarh
+University,
+Chandigarh
+140413,
+India
+(e-mail:
+111231027@live.asia.edu.tw).
+Digital Object Identifier 10.1109/TCE.2023.3329480
+I. INTRODUCTION
+F
+EDERATED learning (FL) is a kind of machine learning
+in which several clients train a single model together,
+with the help of a coordinating server, but with the data for
+the model stored in separate locations [1], [2]. Many of the
+systemic privacy concerns and costs caused by conventional,
+centralised data science and machine learning techniques may
+be avoided with FL since it embraces the concepts of focussed
+data acquisition and reduction. Researchers from a variety of
+fields discussed the one-of-a-kind features and difficulties of
+FL, surveyed the landscape of existing methods, and pointed
+out numerous promising avenues for further exploration
+[3], [4], [5]. Bonawitz et al. [6] detail a TensorFlow-based,
+flexible production system for FL in the mobile device arena.
+Li et al. [7] analyses the difficulties of training in diverse and
+possibly enormous networks, and suggests numerous avenues
+for future research, while Kairouz et al. [8] discuss these
+developments and give a comprehensive collection of open
+questions and challenges.
+According to the research community as a whole, FL is a
+machine learning approach that, unlike conventional learning,
+trains an algorithm without moving data samples across a large
+number of distributed edge devices or servers. Data privacy,
+data security, data access rights, and access to heterogeneous
+data may all be handled via federated learning, which enables
+several actors to work together on the construction of a single,
+strong machine learning model without sharing data [9], [10],
+[11], [12], [13], [14]. FL has rapidly gained popularity in
+both academia and industry in recent years due to its ability
+to provide privacy protection to Internet users [15], [16].
+Federated learning has applications in various fields, includ-
+ing the medical system, where it can be used to build an
+intelligent system that assists medical staff without sharing
+patient data [17]. Finally, Fan et al. [18], [19] proposes a new
+algorithm for federated learning based on a dual perspective.
+Theoretically, it achieves better convergence rates than the
+state-of-the-art primal federated optimization algorithms under
+certain situations.
+Federated learning is a machine learning approach that
+enables numerous devices to jointly train a common model
+without disclosing their individual data to one another
+[20], [21], [22]. Since protecting users’ personal information
+1558-4127 c⃝2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission.
+See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: University of East London. Downloaded on July 11,2025 at 19:07:06 UTC from IEEE Xplore.  Restrictions apply. 
+
+

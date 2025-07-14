@@ -1,0 +1,43 @@
+Rank,Score,Authors,DOI,Publisher,Techniques,Compliance,Accuracy,Privacy Level,Description
+1,89.0,"Choudhury, Ananya ; Volmer, Leroy ; Martin, Frank ; Fijten, Rianne ; Wee, Leonard ;
+Dekker, Andre ; Soest, Johan van",10.2196/60847,Canada,"DP, HE, Blockchain","GDPR, HIPAA",Not stated,1.0,"The rapid advancement of deep learning in health care presents signiﬁcant
+opportunities for automating complex medical tasks and improving clinical workﬂows. However,
+widespread adoption is impeded by data privacy concerns and the necessity for large, diverse
+datasets across multiple institutions. F"
+2,74.0,"Rehman, Abdur ; Abbas, Sagheer ; Khan, M.A ; Ghazal, Taher M ; Adnan, Khan
+Muhammad ; Mosavi, Amir",10.1016/j.compbiomed.2022.106019,United States: Elsevier Ltd,"HE, Blockchain",None,18.00%,10.0,"AbstractIn recent years, the global Internet of Medical Things (IoMT) industry has
+evolved at a tremendous speed. Security and privacy are key concerns on the IoMT, owing to the
+huge scale and deployment of IoMT networks. Machine learning (ML) and blockchain (BC)
+technologies have signiﬁcantly enhan"
+3,69.0,"Park, Soyoung ; Lee, Junyoung ; Harada, Kaho ; Chi, Jeonghee",10.3390/electronics14010177,Basel: MDPI AG,HE,None,Not stated,10.0,"Secure aggregation of local learning model parameters is crucial for achieving
+privacy-preserving federated learning. This paper presents a novel and practical aggregation method
+that effectively combines the advantages of masking-based aggregation with those of homomorphic
+encryption-based techniqu"
+4,66.0,"Shalabi, Eman ; Khedr, Walid ; Rushdy, Ehab ; Salah, Ahmad",10.3390/info16030244,Basel: MDPI AG,"HE, TEE, Blockchain",None,Not stated,10.0,"Federated learning (FL) is a machine learning technique where clients exchange only
+local model updates with a central server that combines them to create a global model after local
+training. While FL offers privacy beneﬁts through local training, privacy-preserving strategies are
+needed since model"
+5,64.0,"Ghazal, Taher M. ; Islam, Shayla ; Hasan, Mohammad Kamrul ; Abu-Shareha, Ahmad A. ;
+Mokhtar, Umi A. ; Khan, M. Attique ; Baili, Jamel ; Saeed, Ali Q ; Bhattt, Mohammed Wasim ;
+Ahmad, Munir",10.1109/TCE.2025.3572629,IEEE,HE,None,Not stated,10.0,"Healthcare Internet of Things (HIoT) requires large-scale privacy features to ensure
+maximum security in sharing sensitive physiological data in consumer electronics. Recent
+approaches utilize the fusion concept to provide maximum privacy in health data sharing.
+Embedded signing data fusion with the"
+6,61.0,"Pati, Sarthak ; Kumar, Sourav ; Varma, Amokh ; Edwards, Brandon ; Lu, Charles ; Qu,
+Liangqiong ; Wang, Justin J. ; Lakshminarayanan, Anantharaman ; Wang, Shih-han ; Sheller, Micah
+J. ; Chang, Ken ; Singh, Praveer ; Rubin, Daniel L. ; Kalpathy-Cramer, Jayashree ; Bakas, Spyridon",10.1016/j.patter.2024.100974,United States: Elsevier Inc,HE,None,Not stated,10.0,"Artiﬁcial intelligence (AI) shows potential to improve health care by leveraging data
+to build models that can inform clinical workﬂows. However, access to large quantities of diverse
+data is needed to develop robust generalizable models. Data sharing across institutions is not always
+feasible due t"
+7,60.0,"Shen, Jiachen ; Zhao, Yekang ; Huang, Shitao ; Ren, Yongjun
+
+02/07/2025, 23:41
+Page 16 of 31
+https://uel.primo.exlibrisgroup.com/discovery/search?query=any,…ndate,include,2015%7C,%7C2025&offset=0&came_from=pagination_3_2",10.3390/electronics13224478,Basel: MDPI AG,HE,None,Not stated,10.0,"Federated learning avoids centralizing data in a central server by distributing the
+model training process across devices, thus protecting privacy to some extent. However, existing
+research shows that model updates (e.g., gradients or weights) exchanged during federated learning
+may still indirectly"
+8,58.0,"Vaijainthymala Krishnamoorthy, Mahesh",10.2196/70100,Canada: JMIR Publications,"DP, HE","GDPR, HIPAA",Not stated,1.0,"The increasing integration of artiﬁcial intelligence (AI) systems into critical societal
+sectors has created an urgent demand for robust privacy-preserving methods. Traditional
+approaches such as differential privacy and homomorphic encryption often struggle to maintain an
+effective balance between "
