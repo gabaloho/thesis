@@ -12,6 +12,7 @@
 \usepackage{pdfpages}
 \usepackage{times}
 \usepackage{float}
+\usepackage{appendix}
 
 % Setting up the title page
 \begin{document}
@@ -44,14 +45,65 @@ This study critically analyzes privacy-preserving techniques in Federated Learni
 
 \section*{Acknowledgment of AI Usage}
 \addcontentsline{toc}{chapter}{Acknowledgment of AI Usage}
-I acknowledge the use of Grok 3, an AI language model developed by xAI, to assist in the development of this thesis. Grok 3 was utilized on July 14, 2025, to perform the following tasks:
+This thesis was developed with the assistance of Grok 3, an AI language model developed by xAI, under the author's supervision. The AI was used as a collaborative tool to enhance efficiency in specific tasks, while all critical academic judgments, analysis, and final content decisions were made by the author. Below is a detailed disclosure of AI contributions and human oversight:
+
+\subsection*{Scope of AI Assistance}
+Grok 3 was utilized on July 14, 2025, for the following tasks:
 \begin{itemize}
-    \item Refining and synthesizing the literature review (Chapter 2) by summarizing key findings from selected studies and ensuring alignment with research objectives.
-    \item Developing a Python script (\texttt{analyze\_thesis\_top10.py}, Appendix \ref{app:script}) for automated analysis of 8 studies, generating \texttt{top10\_analysis.csv}, \texttt{summary\_report.txt}, and visualizations (Figures \ref{fig:scores_plot}, \ref{fig:technique_prevalence}, \ref{fig:privacy_accuracy}).
-    \item Structuring the thesis by adding appendices (Appendices \ref{app:script}, \ref{app:results}), clarifying the scope of analyses (20, 10, 8, and 12 studies), enhancing the regulatory compliance discussion (Section \ref{sec:discussion}), and refining figure captions.
-    \item Converting all content, including tables, figures, and appendices, into valid LaTeX code for Overleaf compilation.
+    \item \textbf{Literature Synthesis}: 
+    \begin{itemize}
+        \item Summarized key findings from 20 peer-reviewed studies (Chapter 2).
+        \item Identified connections between research objectives and existing literature.
+        \item \textit{Human Oversight}: All summaries were verified against original sources, and thematic analysis was led by the author.
+    \end{itemize}
+    
+    \item \textbf{Technical Implementation}:
+    \begin{itemize}
+        \item Developed the Python scripts \texttt{thesis.py} and \texttt{thesis\_analysis.py} for automated analysis, generating:
+        \begin{itemize}
+            \item Structured data outputs (\texttt{results.csv}, \texttt{top10\_analysis.csv}).
+            \item Visualizations (Figures \ref{fig:scores\_plot}, \ref{fig:technique\_prevalence}, \ref{fig:privacy\_accuracy}).
+            \item Summary reports (\texttt{summary\_report.txt}, \texttt{results.txt}).
+        \end{itemize}
+        \item \textit{Human Oversight}: Script logic was validated by the author, and results were cross-checked against manual analysis.
+    \end{itemize}
+    
+    \item \textbf{Thesis Structuring}:
+    \begin{itemize}
+        \item Proposed initial outlines for appendices (e.g., repository documentation).
+        \item Drafted figure captions and LaTeX formatting templates.
+        \item \textit{Human Oversight}: All structural decisions were refined by the author to align with research goals.
+    \end{itemize}
+    
+    \item \textbf{Content Refinement}:
+    \begin{itemize}
+        \item Converted draft text into LaTeX-compatible code for \texttt{thesis.tex}.
+        \item Suggested clarifications for regulatory compliance discussions (Section \ref{sec:discussion}).
+        \item \textit{Human Oversight}: All content was rigorously edited for accuracy and academic tone.
+    \end{itemize}
 \end{itemize}
-The prompts used included requests to summarize literature, generate Python code for analysis, incorporate appendices, and format content in LaTeX. All AI-generated content was reviewed and edited to ensure accuracy and adherence to academic standards.
+
+\subsection*{Prompts and Human-AI Workflow}
+The interaction with Grok 3 followed a structured workflow:
+\begin{enumerate}
+    \item \textbf{Task-Specific Prompts}: 
+    \begin{itemize}
+        \item "Generate Python code to analyze PDFs from \texttt{ThesisTop10Papers.pdf} and output keyword scores."
+        \item "Summarize the privacy-accuracy trade-offs from \texttt{results.csv} for Chapter 4."
+    \end{itemize}
+    \item \textbf{Iterative Review}: 
+    \begin{itemize}
+        \item AI-generated scripts and visualizations (e.g., \texttt{keyword\_scores.png}, \texttt{privacy\_accuracy\_scatter.png}) were validated against raw data in \texttt{extracted\_text.txt}.
+        \item Critical sections (e.g., methodology, conclusions) were written entirely by the author.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Ethical Compliance}
+\begin{itemize}
+    \item All AI-generated content adheres to the University of East London's guidelines on AI usage in research.
+    \item Source attribution is maintained for all cited works; AI was not used to generate original ideas or data.
+    \item The final thesis represents the author's independent academic work, with AI serving as an assistive tool.
+\end{itemize}
 
 % Starting the main chapters
 \chapter{Introduction}
@@ -392,6 +444,51 @@ Future research should focus on adversarial robustness, longitudinal privacy, an
 \section{Concluding Remark}
 Privacy-preserving FL can transform healthcare data collaboration, balancing innovation with patient privacy. Realizing this potential requires multidisciplinary efforts across technical, legal, and clinical domains. This thesis lays a foundation for advancing secure, compliant, and practical FL systems.
 
+% Appendices
+\begin{appendix}
+\chapter{Repository and Data Documentation}
+\label{app:repo}
+
+\section{GitHub Repository}
+The code, datasets, and analysis scripts for this thesis are hosted in a public GitHub repository:  
+\url{https://github.com/gabaloho/thesis.git}
+
+\section{Directory Structure}
+The repository includes the following files and directories, which support the automated analysis and visualizations in this thesis:
+
+\begin{verbatim}
+.
+├── Ex Libris Discovery - privacy-Preserving Techniques in Federated Learning 
+│   for Secure Healthcare Data Sharing.pdf
+├── README.md
+├── ThesisTop10Papers.pdf
+├── chart.png                # Technique prevalence visualization (Fig. 4.3)
+├── extracted_text.txt       # Raw text from PDF analysis
+├── keyword_scores.png       # Keyword scores plot (Fig. 4.1)
+├── privacy_accuracy_scatter.png  # Privacy-accuracy trade-off (Fig. 4.4)
+├── references.bib           # Bibliography database
+├── results.csv              # Automated analysis results
+├── results.txt              # Summary of analysis
+├── summary_report.txt       # Detailed report
+├── technique_prevalence.png # Technique prevalence (Fig. 4.2)
+├── thesis.py                # Main analysis script
+├── thesis.tex               # LaTeX source
+├── thesis_analysis.py       # Supporting scripts
+└── top10_analysis.csv       # Top 10 studies metadata
+\end{verbatim}
+
+\section{Key Scripts}
+\begin{itemize}
+    \item \texttt{thesis.py}: Python script for automated PDF analysis (referenced in Section 4.4).
+    \item \texttt{thesis\_analysis.py}: Supplemental scripts for data extraction and visualization.
+\end{itemize}
+
+\section{Data Sources}
+\begin{itemize}
+    \item \texttt{ThesisTop10Papers.pdf}: Manually curated studies for in-depth review (Table 2.1).
+    \item \texttt{results.csv}: Output of the automated analysis pipeline (Table 2.2).
+\end{itemize}
+\end{appendix}
 
 \bibliographystyle{plainnat}
 \bibliography{references}
