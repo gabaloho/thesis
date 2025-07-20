@@ -1,6 +1,3 @@
-Here's a polished `README.md` for your GitHub repository that reflects your thesis content and provides clear documentation:
-
-```markdown
 # Privacy-Preserving Federated Learning for Healthcare
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -52,7 +49,7 @@ MIT License - See [LICENSE](LICENSE) for details.
 ## 📍 Reference
 If using this work, please cite:  
 *Aloho, G.A. (2025). A Critical Analysis... [Master's thesis]. University of East London.*
-```
+
 
 ### Key Features:
 1. **Thesis-Centric**: Directly mirrors your research objectives/findings
@@ -61,4 +58,3 @@ If using this work, please cite:
 4. **Academic Ready**: Proper citation prompt and license
 5. **Badges**: Professional touch with MIT license shield
 
-Would you like me to add any specific technical details about the analysis methods or healthcare datasets used?
