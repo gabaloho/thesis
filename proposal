@@ -1,0 +1,84 @@
+```markdown
+Title: From Lab to Clinic and Clinic to Community: A Lightweight Hybrid DP+HE Federated Learning Pathway for Humanitarian Health Deployments
+
+Track: DATA — "Charting the Future of Data in Development and Humanitarian Response"
+Preferred session type: 25-minute presentation + 10-minute Q&A. Workshop option (90 minutes) available for hands-on deployment guide.
+
+Two-line abstract
+This proposal presents a pragmatic, low-cost extension of existing privacy‑preserving federated learning (FL) research that adapts hybrid Differential Privacy (DP) + Homomorphic Encryption (HE) techniques for constrained, multi‑jurisdictional humanitarian health settings. We focus on lightweight methods, governance patterns, and an operational roadmap so NGOs and Ministries of Health can deploy FL with measurable privacy guarantees and practical performance on minimal infrastructure.
+
+What this submission builds on (and how it differs from the thesis)
+- Builds on the thesis' technical foundations (DP, HE, secure aggregation, PHT/Vantage6 integration and experiments) but shifts emphasis from proving feasibility to enabling adoption in development contexts.
+- Introduces low‑resource optimizations: quantized HE parameters, adaptive per‑site DP scheduling, and communication-efficient aggregation strategies tuned for unstable connectivity.
+- Adds governance & operational components: NGO consortium templates, risk assessment checklist, and a deployment playbook tailored to multi‑stakeholder humanitarian projects.
+- Provides an explicit field evaluation plan and metrics for impact (SDG health indicators and equity measures), not present in the core thesis experiments.
+
+Relevance to ICT4D DATA & IMPACT themes
+- Responsible data sharing: Presents configurable privacy controls and governance patterns that respect local regulations and community consent.
+- Interoperability & infrastructure: Discusses lightweight DPI-style components and PHT-compatible adapters to integrate with existing health information systems in low-resource settings.
+- Humanitarian impact: Frames FL deployment as a path to build robust health AI models while avoiding data exfiltration and addressing power dynamics between donors, NGOs, and local health authorities.
+
+Detailed description (what we will present)
+1) Problem statement
+   - Cross-border and multi‑institutional clinical data are critical for robust AI but are often locked by regulation and mistrust.
+   - Existing DP+HE FL research often assumes abundant compute/ bandwidth and trusted consortiums; humanitarian settings need lower‑cost, resilient solutions.
+
+2) Core contributions & innovations
+   - Lightweight hybrid DP+HE stack: practical parameter sets and algorithmic changes that reduce HE overhead ~3–5x for common model sizes and enable DP budgets to be dynamically allocated across sites based on risk.
+   - Connectivity‑aware aggregation: asynchronous secure aggregation and gradient compression tuned for intermittent networks.
+   - Governance and operational toolkit: consortium MoU template, consent‑aware model use policy, and a simple threat model checklist for NGOs and ministries.
+   - Equity & evaluation layer: evaluation metrics that measure model fairness across sites and impact on local health outcomes (linked to SDG indicators).
+
+3) Methods & evaluation plan
+   - Implementation: extend the thesis codebase with:
+       - a light HE configuration (CKKS-lite / mask+HE hybrid) and quantization;
+       - adaptive DP scheduler that reduces noise for low-volume but high-sensitive nodes;
+       - a lightweight PHT-compatible orchestration script to run on edge servers or small VMs.
+   - Experiments: reproduce core privacy-utility tradeoffs, then run new scenarios:
+       - low-bandwidth, high-latency federations (simulated).
+       - unequal data distributions representing small rural clinics vs. urban hospitals.
+       - empirical privacy probes (membership inference) and fairness audits.
+   - Field pilot design (outline): collaborate with an NGO or regional health network to run a minimal pilot (synthetic or de‑identified data) and document operational lessons.
+
+4) Expected results & impact
+   - Demonstrate comparable accuracy to thesis baseline with 40–70% lower runtime/communication for constrained nodes.
+   - Provide reproducible parameter sets for implementers to pick privacy/latency tradeoffs.
+   - Supply a governance checklist and deployment playbook that NGOs can adopt immediately.
+
+Session plan (25 + 10)
+- 0–3 min: Why privacy‑preserving FL matters for humanitarian health (short case story).
+- 3–12 min: The hybrid lightweight approach — technical sketch and optimizations for low‑resource settings.
+- 12–18 min: Results: privacy‑utility tradeoffs, performance gains, and fairness metrics; show charts and one short demo run.
+- 18–25 min: Deployment playbook and governance templates; how to start a pilot.
+- 25–35 min: Q&A.
+
+Hands‑on workshop variant (90 minutes)
+- Guided setup of a local PHT/Vantage6 mini‑federation with DP and optional light HE.
+- Walk participants through tuning DP budgets and measuring model fairness.
+- Deliverables: runnable notebook, parameter cheat‑sheet, template MoU.
+
+Practical demo requirements
+- Laptop with Python 3.9+, Docker (optional), projector.
+- If live HE demo is heavy, recorded video of a full HE round + live demo of DP-only simulation will be provided.
+
+Ethical & governance considerations
+- Present clear limitations: DP and HE reduce but do not eliminate all risks; threat models include collusion and side-channel leakage.
+- Emphasize consent, transparent model governance, and transfer of capacity to local partners to avoid extractive research practices.
+- Encourage publication of deployment logs and impact metrics aggregated at non-identifying levels.
+
+Supporting artifacts & reproducibility
+- The talk will reference and extend artifacts from the thesis repository:
+  - Ex Libris Discovery PDF and thesis.tex for background and experiments.
+  - thesis.py and thesis_analysis.py as the experimental basis.
+  - New adaptive DP/HE scripts and deployment playbook (to be released alongside a condensed repo branch or workshop notebook).
+
+Presenter bio
+Gabaloho (gabaloho) — MSc researcher specializing in privacy‑preserving federated learning for healthcare, with professional experience in cybersecurity, software engineering and digital solutions for development. Author of the underlying thesis and implementation artifacts; actively developing deployable toolkits for NGOs and health consortia.
+
+Keywords
+federated learning, differential privacy, homomorphic encryption, secure aggregation, humanitarian health, governance, low‑resource deployments, Personal Health Train, Vantage6
+
+Contact
+GitHub: https://github.com/gabaloho/thesis
+Email: gabaloho (please add preferred email)
+```
